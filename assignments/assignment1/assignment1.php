@@ -41,7 +41,7 @@
                             <option value="virginia">Virginia</option>
                             <option value="michigan" selected>Michigan</option>
                             <option value="texas">Texas</option>
-                            <option value="main">Main</option>
+                            <option value="maine">Maine</option>
                         </select>
                     </div>
                     <div class="col-md-2">
