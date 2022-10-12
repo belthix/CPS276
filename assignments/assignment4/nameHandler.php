@@ -2,7 +2,7 @@
 
     class NameHandler {
         
-        private $_nameList;
+        private $_names;
 
         public function __construct()
         {
@@ -10,29 +10,23 @@
             if (!count($_POST)) return;
 
             if (isset($_POST['clearList'])) {
-                $this->_nameList = '';
+                $this->_names = [];
             } else {
-                //Correcting to match instructions
-                //
-                
-                // $this->_nameList = isset($_POST['nameList']) ? $_POST['nameList'] : '';
-
-                // #If list has text but doesnt end in a newline
-                // if (preg_match('/(^.+)([^(\\n)||(\\r)]$)/', $this->_nameList))
-                //     $this->_nameList .= "\n";
+                $this->_names = isset($_POST['nameList']) ? explode("\n", $_POST['nameList']) : [];
             
-                // if (isset($_POST['newName'])) {
-                //     $newName = explode(' ', $_POST['newName'], 2);
-                    
-                //     #Skip if incorrect syntax
-                //     if (count($newName) == 2) {
-                //         $this->_nameList .= "{$newName[1]}, {$newName[0]}\n";
-                //     }
-                // }
+                if (isset($_POST['newName'])) {
+                    $newName = explode(' ', $_POST['newName'], 2);
+
+                    #Skip if incorrect syntax
+                    if (count($newName) == 2) {
+                        array_push($this->_names, "{$newName[1]}, {$newName[0]}");
+                        sort($this->_names);
+                    }
+                }
             }
         }
 
-        public function getNames() { return $this->_nameList; }
+        public function getNames() { return implode("\n", $this->_names); }
     }
 
 ?>
