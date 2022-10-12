@@ -19,12 +19,12 @@
                     $this->_nameList .= "\n";
             
                 if (isset($_POST['newName'])) {
-                   $newName = explode(' ', $_POST['newName'], 2);
-
-                   #Skip if incorrect syntax
-                   if (count($newName) == 2) {
-                       $this->_nameList .= "{$newName[1]}, {$newName[0]}\n";
-                   }
+                    $newName = explode(' ', $_POST['newName'], 2);
+                    
+                    #Skip if incorrect syntax
+                    if (count($newName) == 2) {
+                        $this->_nameList .= "{$newName[1]}, {$newName[0]}\n";
+                    }
                 }
             }
         }
