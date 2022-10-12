@@ -18,7 +18,7 @@
                     #Skip if incorrect syntax
                     if (count($newName) == 2) {
                         array_push($this->_names, "{$newName[1]}, {$newName[0]}");
-                        sort($this->_names);
+                        natcasesort($this->_names);
                     }
                 }
             }
