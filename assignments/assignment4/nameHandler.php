@@ -12,20 +12,23 @@
             if (isset($_POST['clearList'])) {
                 $this->_nameList = '';
             } else {
-                $this->_nameList = isset($_POST['nameList']) ? $_POST['nameList'] : '';
+                //Correcting to match instructions
+                //
+                
+                // $this->_nameList = isset($_POST['nameList']) ? $_POST['nameList'] : '';
 
-                #If list has text but doesnt end in a newline
-                if (preg_match('/(^.+)([^(\\n)||(\\r)]$)/', $this->_nameList))
-                    $this->_nameList .= "\n";
+                // #If list has text but doesnt end in a newline
+                // if (preg_match('/(^.+)([^(\\n)||(\\r)]$)/', $this->_nameList))
+                //     $this->_nameList .= "\n";
             
-                if (isset($_POST['newName'])) {
-                    $newName = explode(' ', $_POST['newName'], 2);
+                // if (isset($_POST['newName'])) {
+                //     $newName = explode(' ', $_POST['newName'], 2);
                     
-                    #Skip if incorrect syntax
-                    if (count($newName) == 2) {
-                        $this->_nameList .= "{$newName[1]}, {$newName[0]}\n";
-                    }
-                }
+                //     #Skip if incorrect syntax
+                //     if (count($newName) == 2) {
+                //         $this->_nameList .= "{$newName[1]}, {$newName[0]}\n";
+                //     }
+                // }
             }
         }
 
