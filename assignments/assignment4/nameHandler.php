@@ -7,9 +7,7 @@
         public function __construct()
         {
             #Exit if no input
-            if (!count($_POST)) return;
-
-            if (isset($_POST['clearList'])) {
+            if (!count($_POST) || isset($_POST['clearList'])) {
                 $this->_names = [];
             } else {
                 $this->_names = isset($_POST['nameList']) ? explode("\n", $_POST['nameList']) : [];
