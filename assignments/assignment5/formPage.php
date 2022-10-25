@@ -20,7 +20,7 @@
     </head>
     <body>
         <div class="container">
-            <form method="post" action="nameFormPage.php" class="row-g3">
+            <form method="post" action="formPage.php" class="row-g3">
 
                 <h1>File and Directory Assignment</h1>
                 <p>Enter a folder name and the contents of a file. Folder names should contain alpha numeric character only.</p>

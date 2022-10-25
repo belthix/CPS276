@@ -1,32 +1,34 @@
 <?php
-
     class Directories {
-        STATIC $_basePath = "dirs/";
+        STATIC $_basePath = "./dirs/";
         private $_msg;
 
         public function __construct()
         {
-            if (count($_POST) < 2 || !(isset($_POST['folderName']) && isset($_POST['fileContents']))) {
-                $this->_msg = '';
+            $this->_msg = '';
+            if (count($_POST) < 2 || !(isset($_POST['folderName']) && isset($_POST['fileContent']))) {
+                return;
             } else {
                 $dirName = $_POST['folderName'];
-                $fileContent = $_POST['fileContents'];
+                $fileContent = $_POST['fileContent'];
 
-                $path = "{$this->_basePath}{$dirName}";
-                if (file_exists($path)) {
-                    $this->_msg = 'A directory already exists witht hat name.';
+                if (empty($dirName)) return;
+
+                $path = Directories::$_basePath;
+                $path .= "{$dirName}";
+                if (is_dir($path)) {
+                    $this->_msg = 'A directory already exists with that name.';
                 } else {
                     mkdir($path, 0777);
                     chmod($path, 0777);
 
                     $file_path = "{$path}/readme.txt";
-                    touch($file_path);
                     
                     $readme = fopen($file_path, 'w');
                     fwrite($readme, $fileContent);
                     fclose($readme);
 
-                    $this->_msg = "File and driectory were created<br>\"{$file_path}\"";
+                    $this->_msg = "File and driectory were created:</p><p style=\"color:dodgerblue\">{$file_path}";
                 }
             }
         }
